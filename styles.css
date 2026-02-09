@@ -1,0 +1,252 @@
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --bg-1: #0b0612;
+  --bg-2: #12071b;
+
+  --text: #f7f3fb;
+  --muted: rgba(247, 243, 251, 0.7);
+
+  --pink-1: #ff4da6;
+  --pink-2: #ff7ac8;
+
+  --card: rgba(255, 255, 255, 0.06);
+  --border: rgba(255, 255, 255, 0.12);
+
+  --radius: 18px;
+  --shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
+  --max-width: 1100px;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
+  min-height: 100vh;
+  color: var(--text);
+  background:
+    radial-gradient(800px 400px at 15% 10%, rgba(255, 77, 166, 0.18), transparent 60%),
+    radial-gradient(700px 350px at 85% 0%, rgba(255, 122, 200, 0.16), transparent 55%),
+    linear-gradient(180deg, var(--bg-1), var(--bg-2));
+  line-height: 1.7;
+}
+
+
+.bg {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.orb {
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  filter: blur(50px);
+}
+
+.orb-1 {
+  top: -150px;
+  left: -150px;
+  background: rgba(255, 77, 166, 0.35);
+}
+
+.orb-2 {
+  bottom: -200px;
+  right: -200px;
+  background: rgba(255, 122, 200, 0.3);
+}
+
+.bg-grid {
+  position: absolute;
+  inset: 0;
+  opacity: 0.06;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.08) 1px, transparent 1px);
+  background-size: 50px 50px;
+}
+
+
+.container {
+  max-width: var(--max-width);
+  margin: auto;
+  padding: 20px;
+}
+
+.main {
+  padding-top: 90px;
+}
+
+.section {
+  margin: 50px 0;
+}
+
+.section-head {
+  margin-bottom: 18px;
+}
+
+.section-head h2 {
+  font-size: 1.6rem;
+}
+
+.section-head p {
+  color: var(--muted);
+}
+
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+    padding: 5px 40px;
+  background: rgba(10, 6, 18, 0.7);
+  border-bottom: 1px solid var(--border);
+  z-index: 10;
+}
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: var(--text);
+  font-weight: 800;
+}
+
+.brand-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--pink-1), var(--pink-2));
+}
+
+
+.hero {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 20px;
+}
+
+@media (max-width: 900px) {
+  .hero {
+    grid-template-columns: 1fr;
+  }
+}
+
+.hero-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 30px;
+  box-shadow: var(--shadow);
+}
+
+.title {
+  font-size: 3rem;
+  margin: 12px 0;
+}
+
+.subtitle {
+  color: var(--muted);
+  max-width: 60ch;
+}
+
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+
+@media (max-width: 900px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px;
+  box-shadow: var(--shadow);
+  transition: transform 0.25s ease, border-color 0.25s ease;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(255, 122, 200, 0.4);
+}
+
+.card p {
+  color: var(--muted);
+}
+
+
+.btn {
+  display: inline-block;
+  padding: 10px 16px;
+  border-radius: 999px;
+  font-weight: 700;
+  text-decoration: none;
+  color: var(--text);
+  border: 1px solid var(--border);
+  background: rgba(255,255,255,0.06);
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.btn::after {
+  content: "";
+  position: absolute;
+  inset: -50%;
+  background: linear-gradient(
+    120deg,
+    transparent 30%,
+    rgba(255,255,255,0.25) 50%,
+    transparent 70%
+  );
+  transform: translateX(-40%);
+  transition: transform 0.5s ease;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+}
+
+.btn:hover::after {
+  transform: translateX(40%);
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--pink-1), var(--pink-2));
+  color: #1a0614;
+  border: none;
+}
+
+
+.footer {
+  text-align: center;
+  margin: 40px 0 20px;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
